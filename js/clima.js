@@ -16,6 +16,11 @@ window.addEventListener('load', ()=> {
                     let temp = Math.round(data.main.temp)
                     temperaturaValor.textContent = `${temp}°C`
                     ubicacion.textContent = data.name
+                    // Cambio de icono de dia a noche
+                    let now = new Date();
+                    let sunrise = new Date(data.sys.sunrise * 1000);
+                    let sunset = new Date(data.sys.sunset * 1000);
+                    let isDayTime = now > sunrise && now < sunset;
                     // Para iconos animados
                     switch (data.weather[0].main) {
                         case 'Thunderstorm':
@@ -31,21 +36,21 @@ window.addEventListener('load', ()=> {
                             iconoAnimado.src='./img/animated/snowy-6.svg'
                             break;                        
                         case 'Clear':
-                            iconoAnimado.src='./img/animated/day.svg'
+                            iconoAnimado.src = isDayTime ? './img/animated/day.svg' : './img/animated/night.svg'
                             break;
                         case 'Atmosphere':
-                            iconoAnimado.src='./img/animated/weather.svg'
+                            iconoAnimado.src = './img/animated/weather.svg'
                             break;  
                         case 'Clouds':
-                            iconoAnimado.src='./img/animated/cloudy-day-1.svg'
-                            break;  
+                            iconoAnimado.src = isDayTime ? './img/animated/cloudy-day-1.svg' : './img/animated/cloudy-night-1.svg'
+                            break;
                         default:
-                            iconoAnimado.src='./img/animated/cloudy-day-1.svg'
+                            iconoAnimado.src = isDayTime ? './img/animated/cloudy-day-1.svg' : './img/animated/cloudy-night-1.svg'
                     }
-            })
-            .catch(error =>{
+                })
+                .catch(error =>{
                 console.log(error)
-            })
+                })
         })
     }
 })
