@@ -9,7 +9,7 @@ window.addEventListener('load', ()=> {
         navigator.geolocation.getCurrentPosition( posicion => {
             lon = posicion.coords.longitude
             lat = posicion.coords.latitude
-            const url = `https://api.openweathermap.org/data/2.5/weather?q=Palermo,AR&lang=es&units=metric&appid=08e1e06568dcfa3b6de05144b8ee65ac`
+            const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&lang=es&units=metric&appid=08e1e06568dcfa3b6de05144b8ee65ac`
             fetch(url)
                 .then( response => { return response.json() })
                 .then( data => {
