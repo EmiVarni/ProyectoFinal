@@ -1,4 +1,3 @@
-
 // Defino la variable cuenta carrito para el span donde se agregan los productos
 const contenedorTarjetas = document.getElementById("productos-container");
 const unidadesRopa = document.getElementById("unidades");
@@ -23,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const nuevaRopa = document.createElement("div");
             nuevaRopa.classList = "tarjeta-producto";
             nuevaRopa.innerHTML = `
-            <img src="./img/${producto.id}.png">
+            <img src=${producto.imagen} class="img-producto"> 
             <h3>${producto.nombre}</h3>
             <span>$${producto.precio}</span>
             <div>
@@ -47,10 +46,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 crearTarjetasProductosInicio()
                 actualizarTotales();
                 });
-            });
-        }
-        revisarMensajeVacio();
+            })
+            
     }
+    revisarMensajeVacio();
+}
 
     crearTarjetasProductosInicio();
     actualizarTotales();
