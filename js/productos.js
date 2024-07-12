@@ -49,7 +49,7 @@ const peticionML = async () => {
         const card = document.createElement('div');
         card.classList = "tarjeta-producto";
         card.innerHTML = `
-            <img class="img-producto" src="${producto.imagen}.png" alt="${producto.title}" />
+            <img class="img-producto" src="${producto.imagen}" alt="${producto.title}" />
             <h3>${producto.title}</h3>
             <p>$${producto.price}</p>
             <button>Agregar al carrito</button>
